@@ -1,1 +1,3 @@
-# infa_2020_mashin
+r = 3
+print(r)
+
