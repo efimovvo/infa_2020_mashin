@@ -2,56 +2,69 @@ import pygame, sys
 from pygame.draw import *
 from numpy import pi
 
-pygame.init()
-white = ((255,255,255))
-blue = ((0,0,255))
-green = ((0,255,0))
-red = ((255,0,0))
-black = ((0,0,0))
-orange = ((255,100,10))
-yellow = ((255,255,0))
-blue_green = ((0,255,170))
-marroon = ((115,0,0))
-lime = ((180,255,100))
-pink = ((255,100,180))
-purple = ((240,0,255))
-gray = ((127,127,127))
-magenta = ((255,0,230))
-brown = ((100,40,0))
-forest_green = ((0,50,0))
-navy_blue = ((0,0,100))
-rust = ((210,150,75))
-dandilion_yellow = ((255,200,0))
-highlighter = ((255,255,100))
-sky_blue = ((0,255,255))
-light_gray = ((200,200,200))
-dark_gray = ((50,50,50))
-tan = ((230,220,170))
-coffee_brown =((200,190,140))
+def draw_window(x, y, width, height, frame_color, pane_color):
+	''' Function draws WINDOW
+	
+	Attrubute:
+	-----------------------------------------------
+		x : float
+			horizontal coordinate of starting point
+		y : float
+			vertical coordinate of starting point
+		width : float
+			horizontal size of the window
+		height : float
+			vertical size of the window
+		frame_color : tuple of 3 int
+			color of window frame
+		pane_color : tuple of 3 int
+			color of window pane
+	'''
+	frame_width_ratio = 0.1
+	pane_width = (0.5 - 1.5 * frame_width_ratio) * width,
+	pane_height = (0.5 - 1.5 * frame_width_ratio) * height
 
-
-FPS = 30
-screen = pygame.display.set_mode((600, 600))
-screen.fill(brown)
-
-
-
-rect(screen, rust, (0, 250, 600, 450))
-
-
-#Window
-
-def draw_window(x, y, width, height):
-	rect(screen, navy_blue, (x, y, width, height))
-	rect(screen, sky_blue, (x+0.1*width, y+0.1*height, 0.35*width, 0.35*height))
-	rect(screen, sky_blue, (x+0.55*width, y+0.1*height, 0.35*width, 0.35*height))
-	rect(screen, sky_blue, (x+0.1*width, y+0.55*height, 0.35*width, 0.35*height))
-	rect(screen, sky_blue, (x+0.55*width, y+0.55*height, 0.35*width, 0.35*height))
-
-
-draw_window(60, 20, 120, 150)
-draw_window(230, 20, 120, 150)
-draw_window(400, 20, 120, 150)
+	rect(screen, frame_color, (x, y, width, height))
+	rect(
+		screen,
+		pane_color,
+		(
+			x + frame_width_ratio * width,
+			y + frame_width_ratio*height,
+			pane_width,
+			pane_height
+		)
+		)
+	rect(
+		screen,
+		pane_color,
+		(
+			x + 0.5 * width + 0.5 * frame_width_ratio,
+			y + frame_width_ratio * height,
+			pane_width,
+			pane_height
+		)
+		)
+	rect(
+		screen,
+		pane_color,
+		(
+			x + frame_width_ratio * width,
+			y + 0.5 * heitght + 0.5 * frame_width_ratio,
+			pane_width,
+			pane_height
+		)
+		)
+	rect(
+		screen,
+		pane_color,
+		(
+			x + 0.5 * width + 0.5 * frame_width_ratio,
+			y + 0.5 * heitght + 0.5 * frame_width_ratio,
+			pane_width,
+			pane_height
+		)
+		)
 
 #Cat
 def draw_cat(x, y, width, height):
@@ -114,13 +127,6 @@ def draw_cat(x, y, width, height):
 	pygame.draw.arc(screen, black, (x-width/1.4, y+height/11, width/6, height/15), pi/6,pi, 1)
 	pygame.draw.arc(screen, black, (x-width/1.4, y+height/7, width/6, height/15), pi/6,pi, 1)
 
-
-
-
-draw_cat(100, 300, 120, 60)
-draw_cat(430, 300, 150, 75)
-draw_cat(300, 460, 200, 100)
-
 #klubok
 def draw_klubok(x, y, width, height):
 	ellipse(screen, gray, (x, y, width, width))
@@ -135,6 +141,52 @@ def draw_klubok(x, y, width, height):
 
 	pygame.draw.arc(screen, black, (x-1.5*width,y+ 0.84*width, 2*width, width/2), pi/6,pi, 1)
 
+
+pygame.init()
+
+white = ((255,255,255))
+blue = ((0,0,255))
+green = ((0,255,0))
+red = ((255,0,0))
+black = ((0,0,0))
+orange = ((255,100,10))
+yellow = ((255,255,0))
+blue_green = ((0,255,170))
+marroon = ((115,0,0))
+lime = ((180,255,100))
+pink = ((255,100,180))
+purple = ((240,0,255))
+gray = ((127,127,127))
+magenta = ((255,0,230))
+brown = ((100,40,0))
+forest_green = ((0,50,0))
+navy_blue = ((0,0,100))
+rust = ((210,150,75))
+dandilion_yellow = ((255,200,0))
+highlighter = ((255,255,100))
+sky_blue = ((0,255,255))
+light_gray = ((200,200,200))
+dark_gray = ((50,50,50))
+tan = ((230,220,170))
+coffee_brown = ((200,190,140))
+
+FPS = 30
+screen = pygame.display.set_mode((600, 600))
+screen.fill(brown)
+
+
+
+rect(screen, rust, (0, 250, 600, 450))
+
+
+
+draw_window(60, 20, 120, 150, navy_blue, sky_blue)
+draw_window(230, 20, 120, 150, navy_blue, sky_blue)
+draw_window(400, 20, 120, 150, navy_blue, sky_blue)
+
+draw_cat(100, 300, 120, 60)
+draw_cat(430, 300, 150, 75)
+draw_cat(300, 460, 200, 100)
 
 draw_klubok(120, 500, 80, 80)	
 draw_klubok(50, 370, 70, 70)	
