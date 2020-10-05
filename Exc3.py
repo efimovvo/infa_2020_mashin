@@ -3,7 +3,7 @@ from pygame.draw import *
 from numpy import pi
 
 def draw_window(x, y, width, height, frame_color, pane_color):
-	''' Function draws WINDOW
+	''' Function draws a WINDOW
 	
 	Attrubute:
 	-----------------------------------------------
@@ -21,99 +21,120 @@ def draw_window(x, y, width, height, frame_color, pane_color):
 			color of window pane
 	'''
 	frame_width_ratio = 0.1
-	pane_width = (0.5 - 1.5 * frame_width_ratio) * width,
+	pane_width = (0.5 - 1.5 * frame_width_ratio) * width
 	pane_height = (0.5 - 1.5 * frame_width_ratio) * height
 
+	# Window frame
 	rect(screen, frame_color, (x, y, width, height))
+	# Left top pane
 	rect(
 		screen,
 		pane_color,
 		(
 			x + frame_width_ratio * width,
-			y + frame_width_ratio*height,
+			y + frame_width_ratio * height,
 			pane_width,
-			pane_height
+			pane_height,
 		)
 		)
+	# Right top pane
 	rect(
 		screen,
 		pane_color,
 		(
-			x + 0.5 * width + 0.5 * frame_width_ratio,
+			x + (0.5 + 0.5 * frame_width_ratio) * width,
 			y + frame_width_ratio * height,
 			pane_width,
 			pane_height
 		)
 		)
+	# Left bottom pane
 	rect(
 		screen,
 		pane_color,
 		(
 			x + frame_width_ratio * width,
-			y + 0.5 * heitght + 0.5 * frame_width_ratio,
+			y + (0.5 + 0.5 * frame_width_ratio) * height,
 			pane_width,
 			pane_height
 		)
 		)
+	# Right bottom pane
 	rect(
 		screen,
 		pane_color,
 		(
-			x + 0.5 * width + 0.5 * frame_width_ratio,
-			y + 0.5 * heitght + 0.5 * frame_width_ratio,
+			x + (0.5 + 0.5 * frame_width_ratio) * width,
+			y + (0.5 + 0.5 * frame_width_ratio) * height,
 			pane_width,
 			pane_height
 		)
 		)
 
-#Cat
-def draw_cat(x, y, width, height):
+def draw_cat(x, y, width, height, hair_color, eyes_color):
+	''' Function draws a CAT
+	
+	Attrubute:
+	-----------------------------------------------
+		x : float
+			cat horizontal position
+		y : float
+			cat vertical position
+		width : float
+			cat's size in horizontal
+		height : float
+			cat's size in vertical
+		hair_color : tuple of 3 int
+			color of cat's hair
+		eyes_color : tuple of 3 int
+			color of cat's eyes
+	'''
 
-	ellipse(screen, orange, (x+width/3, y-height/6, width/1.5, height/2.5))
-	ellipse(screen, black, (x+width/3, y-height/6, width/1.5, height/2.5),1)
+# Body
+	ellipse(screen, hair_color, (x + width/3, y - height/6, width/1.5, height/2.5))
+	ellipse(screen, black, (x + width/3, y - height/6, width/1.5, height/2.5), 1)
 
-	ellipse(screen, orange, (x-width/2, y-height/2, width, height))
-	ellipse(screen, black, (x-width/2, y-height/2, width, height),1)
+	ellipse(screen, hair_color, (x - width/2, y - height/2, width, height))
+	ellipse(screen, black, (x - width/2, y - height/2, width, height), 1)
 
-	ellipse(screen, orange, (x-width/1.75, y-height/8, width/8, height/2))
-	ellipse(screen, black, (x-width/1.75, y-height/8, width/8, height/2), 1)
+	ellipse(screen, hair_color, (x - width/1.75, y - height/8, width/8, height/2))
+	ellipse(screen, black, (x - width/1.75, y - height/8, width/8, height/2), 1)
 
-	ellipse(screen, orange, (x-4*width/6, y-height/2.5, width/3, height/1.5))
-	ellipse(screen, black, (x-4*width/6, y-height/2.5, width/3, height/1.5),1)
+	ellipse(screen, hair_color, (x - 4*width/6, y - height/2.5, width/3, height/1.5))
+	ellipse(screen, black, (x - 4*width/6, y - height/2.5, width/3, height/1.5), 1)
 
-	ellipse(screen, orange, (x-width/2.3, y+height/4.2, width/4, height/3))
-	ellipse(screen, black, (x-width/2.3, y+height/4.2, width/4, height/3),1)
+	ellipse(screen, hair_color, (x - width/2.3, y + height/4.2, width/4, height/3))
+	ellipse(screen, black, (x - width/2.3, y + height/4.2, width/4, height/3), 1)
 
-	ellipse(screen, orange, (x+width/6, y, width/3, height/1.7))
-	ellipse(screen, black, (x+width/6, y, width/3, height/1.7),1)
+	ellipse(screen, hair_color, (x + width/6, y, width/3, height/1.7))
+	ellipse(screen, black, (x + width/6, y, width/3, height/1.7), 1)
 
-	ellipse(screen, orange, (x+width/2.5, y+height/3, width/7, height/1.7))
-	ellipse(screen, black, (x+width/2.5, y+height/3, width/7, height/1.7),1)
-
-#Eyes
-	ellipse(screen, green, (x-12*width/24, y-height/4.9, width/10, height/5))
+	ellipse(screen, hair_color, (x + width/2.5, y + height/3, width/7, height/1.7))
+	ellipse(screen, black, (x + width/2.5, y + height/3, width/7, height/1.7), 1)
+# Eyes
+	ellipse(screen, eyes_color, (x-12*width/24, y-height/4.9, width/10, height/5))
 	ellipse(screen, black, (x-12*width/24, y-height/4.9, width/10, height/5), 1)
 
-	ellipse(screen, green, (x-15*width/24, y-height/4.9, width/10, height/5))
+	ellipse(screen, eyes_color, (x-15*width/24, y-height/4.9, width/10, height/5))
 	ellipse(screen, black, (x-15*width/24, y-height/4.9, width/10, height/5), 1)
 
 	ellipse(screen, black, (x-11*width/24, y-height/5.3, width/30, height/8))
 	ellipse(screen, black, (x-14*width/24, y-height/5.3, width/30, height/8))
-#Ear
+# Ear
 	polygon(screen, pink, [(x-width/1.6,y-height/2.5), (x-width/1.8,y-height/2.9),
 		                               (x-width/1.61,y-height/4)])
-	polygon(screen, orange, [(x-width/1.6,y-height/2.5), (x-width/1.8,y-height/2.9),
+	polygon(screen, hair_color, [(x-width/1.6,y-height/2.5), (x-width/1.8,y-height/2.9),
 		                               (x-width/1.61,y-height/4)],3)                               
 	polygon(screen, black, [(x-width/1.6,y-height/2.5), (x-width/1.8,y-height/2.9),
 		                               (x-width/1.61,y-height/4)], 1)
 
 	polygon(screen, pink, [(x-width/1.6+width/4,y-height/2.5), (x-width/1.75+width/8,y-height/2.9),
 		                               (x-width/1.61+width/4,y-height/4)])
-	polygon(screen, orange, [(x-width/1.6+width/4,y-height/2.5), (x-width/1.75+width/8,y-height/2.9),
+	polygon(screen, hair_color, [(x-width/1.6+width/4,y-height/2.5), (x-width/1.75+width/8,y-height/2.9),
 		                               (x-width/1.61+width/4,y-height/4)],3)                               
 	polygon(screen, black, [(x-width/1.6+width/4,y-height/2.5), (x-width/1.75+width/8,y-height/2.9),
 		                               (x-width/1.61+width/4,y-height/4)], 1)
-#Nose
+# Nose
 	polygon(screen, black, [(x-width/1.89, y+height/30), (x-width/2.04, y+height/30),
 	                               (x-width/1.98, y+height/15)])
 	pygame.draw.line(screen, black, (x-width/1.98, y+height/15), (x-width/1.98, y+height/10), 1)
@@ -127,8 +148,8 @@ def draw_cat(x, y, width, height):
 	pygame.draw.arc(screen, black, (x-width/1.4, y+height/11, width/6, height/15), pi/6,pi, 1)
 	pygame.draw.arc(screen, black, (x-width/1.4, y+height/7, width/6, height/15), pi/6,pi, 1)
 
-#klubok
-def draw_klubok(x, y, width, height):
+# Klubok
+def draw_ball(x, y, width, height):
 	ellipse(screen, gray, (x, y, width, width))
 	ellipse(screen, black, (x, y, width, width), 2)
 	pygame.draw.arc(screen, black, (x+width/8,y+ width/4, width/2, width/3), pi/6,pi, 1)
@@ -174,24 +195,24 @@ FPS = 30
 screen = pygame.display.set_mode((600, 600))
 screen.fill(brown)
 
-
-
+# Background
 rect(screen, rust, (0, 250, 600, 450))
 
-
-
+# Drawing the windows
 draw_window(60, 20, 120, 150, navy_blue, sky_blue)
 draw_window(230, 20, 120, 150, navy_blue, sky_blue)
 draw_window(400, 20, 120, 150, navy_blue, sky_blue)
 
-draw_cat(100, 300, 120, 60)
-draw_cat(430, 300, 150, 75)
-draw_cat(300, 460, 200, 100)
+# Drawing the cats
+draw_cat(100, 300, 120, 60, orange, green)
+draw_cat(430, 300, 150, 75, gray, sky_blue)
+draw_cat(300, 460, 200, 100, brown, green)
 
-draw_klubok(120, 500, 80, 80)	
-draw_klubok(50, 370, 70, 70)	
-draw_klubok(240, 280, 65, 65)	
-draw_klubok(500, 500, 90, 90)
+# Drawing the balls
+draw_ball(120, 500, 80, 80)	
+draw_ball(50, 370, 70, 70)	
+draw_ball(240, 280, 65, 65)	
+draw_ball(500, 500, 90, 90)
 
 pygame.display.update()
 clock = pygame.time.Clock()
