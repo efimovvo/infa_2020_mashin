@@ -161,7 +161,7 @@ def draw_cat(x, y, width, height, hair_color, eyes_color):
 	arc(screen, black, (x-width/1.4, y+height/7, width/6, height/15), pi/6,pi, 1)
 
 # Ball
-def draw_ball(x, y, width, height, ball_color, fiber_color):
+def draw_ball(x, y, diameter, ball_color, fiber_color):
 	''' Function draws a BALL
 	
 	Attrubutes:
@@ -170,30 +170,28 @@ def draw_ball(x, y, width, height, ball_color, fiber_color):
 			ball horizontal position
 		y : float
 			ball vertical position
-		width : float
-			ball size in horizontal
-		height : float
-			ball size in vertical
+		diameter : float
+			ball diameter
 		ball_color : tuple of 3 int
 			color of ball
 		fiber_color : tuple of 3 int
 			color of ball border and fiber lines
 	'''
-	ellipse(screen, ball_color, (x, y, width, width))
-	ellipse(screen, fiber_color, (x, y, width, width), 2)
+	ellipse(screen, ball_color, (x, y, diameter, diameter))
+	ellipse(screen, fiber_color, (x, y, diameter, diameter), 2)
 
 # Top 3 arcs of on the ball from the top to the bottom
-	pygame.draw.arc(screen, fiber_color, (x + width/8, y + width/4, width/2, width/3), pi/6,pi, 1)
-	pygame.draw.arc(screen, fiber_color, (x + width/8, y + width/2.5, width/2, width/3), pi/6,pi, 1)
-	pygame.draw.arc(screen, fiber_color, (x + width/8, y + width/2, width/2, width/3), pi/6,pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x + diameter/8, y + diameter/4, diameter/2, diameter/3), pi/6,pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x + diameter/8, y + diameter/2.5, diameter/2, diameter/3), pi/6,pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x + diameter/8, y + diameter/2, diameter/2, diameter/3), pi/6,pi, 1)
 
 # Bottom 3 arcs of on the ball from the top to the bottom
-	pygame.draw.arc(screen, fiber_color, (x + width/4, y + width/3, width/2, width/3), pi + pi/4, pi+pi, 1)
-	pygame.draw.arc(screen, fiber_color, (x + width/4, y + width/2.5, width/2, width/3), pi + pi/4, pi+pi, 1)
-	pygame.draw.arc(screen, fiber_color, (x + width/4, y + width/2, width/2, width/3), pi + pi/4, pi+pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x + diameter/4, y + diameter/3, diameter/2, diameter/3), pi + pi/4, pi+pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x + diameter/4, y + diameter/2.5, diameter/2, diameter/3), pi + pi/4, pi+pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x + diameter/4, y + diameter/2, diameter/2, diameter/3), pi + pi/4, pi+pi, 1)
 
 # One external fiber
-	pygame.draw.arc(screen, fiber_color, (x - 1.5*width, y + 0.84*width, 2*width, width/2), pi/6, pi, 1)
+	pygame.draw.arc(screen, fiber_color, (x - 1.5*diameter, y + 0.84*diameter, 2*diameter, diameter/2), pi/6, pi, 1)
 
 pygame.init()
 
@@ -252,10 +250,10 @@ draw_cat(screen_width * 3/4, 460, screen_width/2, 100, brown, green)
 # Drawing the balls
 basic_ball_radius = screen_width / 40
 
-draw_ball(screen_width / 3, screen_height * 5/6, 8*basic_ball_radius, 8*basic_ball_radius, gray, black)	
-draw_ball(screen_width / 8, screen_height * 7/12, 7*basic_ball_radius, 7*basic_ball_radius, gray, white)
-draw_ball(screen_width * 2/3, screen_height * 4/7, 6*basic_ball_radius, 6*basic_ball_radius, gray, black)
-draw_ball(screen_width * 11/12, screen_height * 5/6, 9*basic_ball_radius, 9*basic_ball_radius, gray, black)
+draw_ball(screen_width / 3, screen_height * 5/6, 8*basic_ball_radius, gray, black)	
+draw_ball(screen_width / 8, screen_height * 7/12, 7*basic_ball_radius, gray, white)
+draw_ball(screen_width * 2/3, screen_height * 4/7, 6*basic_ball_radius, gray, black)
+draw_ball(screen_width * 11/12, screen_height * 5/6, 9*basic_ball_radius, gray, black)
 
 pygame.display.update()
 clock = pygame.time.Clock()
