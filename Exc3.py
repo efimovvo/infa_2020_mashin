@@ -195,7 +195,7 @@ def draw_ball(x, y, diameter, ball_color, fiber_color):
 
 pygame.init()
 
-''' Color set '''
+# Color set
 white = (255,255,255)
 blue = (0,0,255)
 green = (0,255,0)
@@ -238,6 +238,7 @@ rect(screen, rust, (0, 250, 600, 450))
 # Drawing the windows
 window_width = screen_width / 3
 window_height = screen_height / 4
+
 draw_window(screen_width / 12, 20, window_width, window_height, navy_blue, sky_blue)
 draw_window(screen_width / 2, 20, window_width, window_height, navy_blue, sky_blue)
 draw_window(screen_width * 11/12, 20, window_width, window_height, navy_blue, sky_blue)
