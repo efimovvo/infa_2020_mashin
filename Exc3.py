@@ -120,6 +120,7 @@ def draw_cat(x, y, width, height, hair_color, eyes_color):
 
 	ellipse(screen, hair_color, (x + width/2.5, y + height/3, width/7, height/1.7))
 	ellipse(screen, black, (x + width/2.5, y + height/3, width/7, height/1.7), 1)
+
 # Cat's eyes
 	ellipse(screen, eyes_color, (x-12*width/24, y-height/4.9, width/10, height/5))
 	ellipse(screen, black, (x-12*width/24, y-height/4.9, width/10, height/5), 1)
@@ -129,6 +130,7 @@ def draw_cat(x, y, width, height, hair_color, eyes_color):
 
 	ellipse(screen, black, (x-11*width/24, y-height/5.3, width/30, height/8))
 	ellipse(screen, black, (x-14*width/24, y-height/5.3, width/30, height/8))
+
 # Cat's ear
 	polygon(screen, pink, [(x-width/1.6, y-height/2.5), (x-width/1.8, y-height/2.9),
 										(x-width/1.61, y-height/4)])
@@ -143,6 +145,7 @@ def draw_cat(x, y, width, height, hair_color, eyes_color):
 										(x-width/1.61+width/4, y-height/4)],3)                               
 	polygon(screen, black, [(x-width/1.6+width/4, y-height/2.5), (x-width/1.75+width/8, y-height/2.9),
 										(x-width/1.61+width/4, y-height/4)], 1)
+
 # Cat's nose
 	polygon(screen, black, [(x-width/1.89, y+height/30), (x-width/2.04, y+height/30),
 										(x-width/1.98, y+height/15)])
@@ -179,21 +182,22 @@ def draw_ball(x, y, width, height, ball_color, fiber_color):
 	ellipse(screen, ball_color, (x, y, width, width))
 	ellipse(screen, fiber_color, (x, y, width, width), 2)
 
-	# Top 3 arcs of on the ball from the top to the bottom
+# Top 3 arcs of on the ball from the top to the bottom
 	pygame.draw.arc(screen, fiber_color, (x + width/8, y + width/4, width/2, width/3), pi/6,pi, 1)
 	pygame.draw.arc(screen, fiber_color, (x + width/8, y + width/2.5, width/2, width/3), pi/6,pi, 1)
 	pygame.draw.arc(screen, fiber_color, (x + width/8, y + width/2, width/2, width/3), pi/6,pi, 1)
 
-	# Bottom 3 arcs of on the ball from the top to the bottom
+# Bottom 3 arcs of on the ball from the top to the bottom
 	pygame.draw.arc(screen, fiber_color, (x + width/4, y + width/3, width/2, width/3), pi + pi/4, pi+pi, 1)
 	pygame.draw.arc(screen, fiber_color, (x + width/4, y + width/2.5, width/2, width/3), pi + pi/4, pi+pi, 1)
 	pygame.draw.arc(screen, fiber_color, (x + width/4, y + width/2, width/2, width/3), pi + pi/4, pi+pi, 1)
 
-	# One external fiber
+# One external fiber
 	pygame.draw.arc(screen, fiber_color, (x - 1.5*width, y + 0.84*width, 2*width, width/2), pi/6, pi, 1)
 
 pygame.init()
 
+''' Color set '''
 white = (255,255,255)
 blue = (0,0,255)
 green = (0,255,0)
@@ -220,17 +224,17 @@ dark_gray = (50,50,50)
 tan = (230,220,170)
 coffee_brown = (200,190,140)
 
+# Screen constants
 FPS = 30
 screen_width = 400
 screen_height = 600
 
-
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-# Background = the wall color
+# Drawing background = the wall
 screen.fill(brown)
 
-# The floor
+# Drawing the floor 
 rect(screen, rust, (0, 250, 600, 450))
 
 # Drawing the windows
@@ -238,29 +242,29 @@ window_width = screen_width / 3
 window_height = screen_height / 4
 draw_window(screen_width / 12, 20, window_width, window_height, navy_blue, sky_blue)
 draw_window(screen_width / 2, 20, window_width, window_height, navy_blue, sky_blue)
-draw_window(screen_width * 11 / 12, 20, window_width, window_height, navy_blue, sky_blue)
+draw_window(screen_width * 11/12, 20, window_width, window_height, navy_blue, sky_blue)
 
 # Drawing the cats
-draw_cat(screen_width / 4, 300, screen_width / 3, 60, orange, green)
-draw_cat(screen_width * 7 / 8, 300, screen_width * 2 / 5, 75, gray, sky_blue)
-draw_cat(screen_width * 3 / 4, 460, screen_width / 2, 100, brown, green)
+draw_cat(screen_width/4, 300, screen_width/3, 60, orange, green)
+draw_cat(screen_width * 7/8, 300, screen_width * 2/5, 75, gray, sky_blue)
+draw_cat(screen_width * 3/4, 460, screen_width/2, 100, brown, green)
 
 # Drawing the balls
 basic_ball_radius = screen_width / 40
 
-draw_ball(screen_width / 3, screen_height * 5 / 6, 8 * basic_ball_radius, 8 * basic_ball_radius, gray, black)	
-draw_ball(screen_width / 8, screen_height * 7 / 12, 7 * basic_ball_radius, 7 * basic_ball_radius, gray, white)
-draw_ball(screen_width * 2 / 3, screen_height * 4 / 7, 6  * basic_ball_radius, 6 * basic_ball_radius, gray, black)
-draw_ball(screen_width * 11 / 12, screen_height * 5 / 6, 9 * basic_ball_radius, 9 * basic_ball_radius, gray, black)
+draw_ball(screen_width / 3, screen_height * 5/6, 8*basic_ball_radius, 8*basic_ball_radius, gray, black)	
+draw_ball(screen_width / 8, screen_height * 7/12, 7*basic_ball_radius, 7*basic_ball_radius, gray, white)
+draw_ball(screen_width * 2/3, screen_height * 4/7, 6*basic_ball_radius, 6*basic_ball_radius, gray, black)
+draw_ball(screen_width * 11/12, screen_height * 5/6, 9*basic_ball_radius, 9*basic_ball_radius, gray, black)
 
 pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
 
 while not finished:
-    clock.tick(FPS)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            finished = True
+	clock.tick(FPS)
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			finished = True
 
 pygame.quit()
